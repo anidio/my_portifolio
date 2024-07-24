@@ -10,9 +10,16 @@ const Hero = () => {
 
     const StyledHero = styled("div")(({ theme }) => ({
         backgroundColor: theme.palette.primary.main,
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        overflowY: "auto",
+    [theme.breakpoints.up('xs')]:{
+        paddingTop: "100px"
+    },
+    [theme.breakpoints.up('md')]:{
+        paddingTop: "0px"
+    }
     }))
 
     const Styledimage = styled("img")(({ theme }) => ({
@@ -20,6 +27,10 @@ const Hero = () => {
         borderRadius: "50%",
         border: `10px solid ${theme.palette.primary.contrastText}`
     }))
+
+    const handleButtonClick = (url) => {
+        window.open(url, '_blank');
+    };
 
     return (
         <>
@@ -38,27 +49,26 @@ const Hero = () => {
                             </Box>
                         </Grid>
                         <Grid item xs={12} md={8}>
-                            <Typography color="primary.contratText" variant="h1" textAlign="center">Isaías Roberto</Typography>
-                            <Typography color="primary.contratText" variant="h2" textAlign="center" pd={2}>I'm a FullStack Developer</Typography>
+                            <Typography color="secondary" variant="h1" textAlign="center">Isaías Roberto</Typography>
+                            <Typography color="secondary" variant="h2" textAlign="center" pd={2}>I'm a FullStack Developer</Typography>
                             <Grid container display="flex" justifyContent="center" spacing={2} pt={3}>
                                 <Grid item xs={12} md={4} display="flex" justifyContent="center">
-                                    <StyledButton>
+                                    <StyledButton onClick={() => handleButtonClick("https://www.linkedin.com/in/isaiasroberto/")}>
                                         <LinkedInIcon />
                                         <Typography>Linkedin</Typography>
                                     </StyledButton>
                                 </Grid>
                                 <Grid item xs={12} md={4} display="flex" justifyContent="center">
-                                    <StyledButton>
-                                        <EmailIcon />
-                                        <Typography>Contact Me</Typography>
-                                    </StyledButton>
-                                </Grid>
-                                <Grid item xs={12} md={4} display="flex" justifyContent="center">
-                                    <StyledButton>
+                                    <StyledButton onClick={() => handleButtonClick("https://beacons.ai/isaiasroberto")}>
                                         <InstagramIcon />
                                         <Typography>social media +</Typography>
                                     </StyledButton>
-
+                                </Grid>
+                                <Grid item xs={12} md={4} display="flex" justifyContent="center">
+                                <StyledButton onClick={() => window.location.href = "mailto:isaias.reng@gmail.com"}>
+                                        <EmailIcon />
+                                        <Typography>Contact Me</Typography>
+                                    </StyledButton>
                                 </Grid>
                             </Grid>
                         </Grid>
